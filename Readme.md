@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Nikita Sudaev](https://up.htmlacademy.ru/react/15/user/2495895).
-* Наставник: `Неизвестно`.
+* Наставник: [Artem Novoselov](https://htmlacademy.ru/profile/id1195129).
 
 ---
 
