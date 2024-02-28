@@ -2,8 +2,8 @@ import type { ReactNode } from 'react';
 
 type PagePropsT = {
   className?: string;
-  header?: React.Component;
-  footer?: React.Component;
+  header?: ReactNode;
+  footer?: ReactNode;
   children: ReactNode | ReactNode[];
 }
 
