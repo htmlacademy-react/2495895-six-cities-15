@@ -51,7 +51,7 @@ const MOCKED_OFFERS_DATA = {
         'longitude': 2.330499,
         'zoom': 16
       },
-      'isFavorite': false,
+      'isFavorite': true,
       'isPremium': true,
       'rating': 2.7
     },
@@ -74,7 +74,7 @@ const MOCKED_OFFERS_DATA = {
         'longitude': 2.335499,
         'zoom': 16
       },
-      'isFavorite': false,
+      'isFavorite': true,
       'isPremium': false,
       'rating': 2
     },
@@ -97,7 +97,7 @@ const MOCKED_OFFERS_DATA = {
         'longitude': 2.358499,
         'zoom': 16
       },
-      'isFavorite': false,
+      'isFavorite': true,
       'isPremium': true,
       'rating': 5
     },
@@ -108,7 +108,7 @@ const MOCKED_OFFERS_DATA = {
       'price': 389,
       'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/5.jpg',
       'city': {
-        'name': 'Paris',
+        'name': 'Cologne',
         'location': {
           'latitude': 48.85661,
           'longitude': 2.351499,
@@ -120,7 +120,7 @@ const MOCKED_OFFERS_DATA = {
         'longitude': 2.375499,
         'zoom': 16
       },
-      'isFavorite': false,
+      'isFavorite': true,
       'isPremium': false,
       'rating': 1.7
     },

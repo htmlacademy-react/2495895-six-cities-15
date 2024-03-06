@@ -5,31 +5,32 @@ import { Page } from '../../components/templates';
 import type { OfferInstanceT } from '../../components/app/app';
 
 type OfferPropsT = {
-  popularOffers: OfferInstanceT[];
+  offers: OfferInstanceT[];
 }
-export const Offer = ({ popularOffers }: OfferPropsT) => (
+
+export const Offer = ({ offers }: OfferPropsT) => (
   <Page>
     <main className="page__main page__main--offer">
       <section className="offer">
         <div className="offer__gallery-container container">
           <div className="offer__gallery">
             <div className="offer__image-wrapper">
-              <img className="offer__image" src="img/room.jpg" alt="Photo studio" />
+              <img className="offer__image" src="img/room.jpg" alt="Photo studio"/>
             </div>
             <div className="offer__image-wrapper">
-              <img className="offer__image" src="img/apartment-01.jpg" alt="Photo studio" />
+              <img className="offer__image" src="img/apartment-01.jpg" alt="Photo studio"/>
             </div>
             <div className="offer__image-wrapper">
-              <img className="offer__image" src="img/apartment-02.jpg" alt="Photo studio" />
+              <img className="offer__image" src="img/apartment-02.jpg" alt="Photo studio"/>
             </div>
             <div className="offer__image-wrapper">
-              <img className="offer__image" src="img/apartment-03.jpg" alt="Photo studio" />
+              <img className="offer__image" src="img/apartment-03.jpg" alt="Photo studio"/>
             </div>
             <div className="offer__image-wrapper">
-              <img className="offer__image" src="img/studio-01.jpg" alt="Photo studio" />
+              <img className="offer__image" src="img/studio-01.jpg" alt="Photo studio"/>
             </div>
             <div className="offer__image-wrapper">
-              <img className="offer__image" src="img/apartment-01.jpg" alt="Photo studio" />
+              <img className="offer__image" src="img/apartment-01.jpg" alt="Photo studio"/>
             </div>
           </div>
         </div>
@@ -213,7 +214,7 @@ export const Offer = ({ popularOffers }: OfferPropsT) => (
         <section className="near-places places">
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
           <div className="near-places__list places__list">
-            {popularOffers.map((instance) => <Card key={instance.id} {...instance} />)}
+            {offers.slice(0, 3).map((instance) => <Card key={instance.id} {...instance} />)}
           </div>
         </section>
       </div>

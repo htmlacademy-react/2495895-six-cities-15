@@ -1,9 +1,11 @@
 import { Header } from '../../components/organisms';
+import { Page } from '../../components/templates';
 
 export const Login = () => (
-  <div className="page page--gray page--login">
-    <Header hideUserInfo />
-
+  <Page
+    className="page--gray page--login"
+    header={<Header hideUserInfo />}
+  >
     <main className="page__main page__main--login">
       <div className="page__login-container container">
         <section className="login">
@@ -29,5 +31,5 @@ export const Login = () => (
         </section>
       </div>
     </main>
-  </div>
+  </Page>
 );
