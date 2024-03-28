@@ -1,4 +1,7 @@
+import { Link } from 'react-router-dom';
+
 type CardProps = {
+  id: string;
   title: string;
   type: string;
   price: number;
@@ -6,22 +9,24 @@ type CardProps = {
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;
+  onMouseOver: () => void;
+  onMouseLeave: () => void;
 }
 
 export const Card = (props: CardProps) => {
-  const { title, type, price, previewImage, isFavorite, isPremium, rating } = props;
+  const { id, title, type, price, previewImage, isFavorite, isPremium, rating, onMouseOver, onMouseLeave } = props;
 
   return (
-    <article className="cities__card place-card">
+    <article className="cities__card place-card" onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
       {isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <Link to={`/offer/${id}`}>
           <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image"/>
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -43,7 +48,7 @@ export const Card = (props: CardProps) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <Link to={`/offer/${id}`}>{title}</Link>
         </h2>
         <p className="place-card__type" style={{ textTransform: 'capitalize' }}>{type}</p>
       </div>
