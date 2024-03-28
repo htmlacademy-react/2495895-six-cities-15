@@ -10,3 +10,12 @@ export enum AuthorizationStatus {
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
+
+export enum City {
+  paris = 'Paris',
+  cologne = 'Cologne',
+  brussels = 'Brussels',
+  amsterdam = 'Amsterdam',
+  hamburg = 'Hamburg',
+  dusseldorf = 'Dusseldorf',
+}

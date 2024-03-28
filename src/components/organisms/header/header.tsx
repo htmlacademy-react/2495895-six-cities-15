@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 
-type HeaderPropsT = {
+type HeaderProps = {
   hideUserInfo?: boolean;
 }
 
-export const Header = ({ hideUserInfo }: HeaderPropsT) => (
+export const Header = ({ hideUserInfo }: HeaderProps) => (
   <header className="header">
     <div className="container">
       <div className="header__wrapper">

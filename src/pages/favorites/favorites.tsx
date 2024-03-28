@@ -3,15 +3,15 @@ import { Header, Footer } from '../../components/organisms';
 import { Page } from '../../components/templates/page';
 import { AppRoute } from '../../consts';
 
-import type { OfferInstanceT } from '../../components/app/app';
+import type { OfferInstance } from '../../components/app/app';
 
-type FavoritesPropsT = {
-  favorites?: OfferInstanceT[];
+type FavoritesProps = {
+  favorites?: OfferInstance[];
 }
 
-function getInstancesSortedByCities(instances: OfferInstanceT[]): { [propertyName: string]: OfferInstanceT[] } {
+function getInstancesSortedByCities(instances: OfferInstance[]): { [propertyName: string]: OfferInstance[] } {
   const sortedInstances: {
-    [propertyName: string]: OfferInstanceT[];
+    [propertyName: string]: OfferInstance[];
   } = {};
   instances.map((instance) => {
     if (!sortedInstances[instance.city.name]?.length) {
@@ -22,9 +22,9 @@ function getInstancesSortedByCities(instances: OfferInstanceT[]): { [propertyNam
   return sortedInstances;
 }
 
-export const Favorites = ({ favorites }: FavoritesPropsT) => {
+export const Favorites = ({ favorites }: FavoritesProps) => {
   const instancesSortedByCities: {
-    [propertyName: string]: OfferInstanceT[];
+    [propertyName: string]: OfferInstance[];
   } = favorites && favorites.length > 0 ? getInstancesSortedByCities(favorites) : {};
 
   return (
@@ -42,9 +42,9 @@ export const Favorites = ({ favorites }: FavoritesPropsT) => {
                   <li key={cityName} className="favorites__locations-items">
                     <div className="favorites__locations locations locations--current">
                       <div className="locations__item">
-                        <a className="locations__item-link" href="#">
+                        <Link to={`${AppRoute.Root}?city=${cityName.toLowerCase()}`} className="locations__item-link">
                           <span>{cityName}</span>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                     <div className="favorites__places">
@@ -56,7 +56,7 @@ export const Favorites = ({ favorites }: FavoritesPropsT) => {
                             </div>
                           )}
                           <div className="favorites__image-wrapper place-card__image-wrapper">
-                            <Link to={`${AppRoute.Offer}/${instance.id}`}>
+                            <Link to={`/offer/${instance.id}`}>
                               <img className="place-card__image" src={instance.previewImage} width="150" height="110" alt="Place image" />
                             </Link>
                           </div>
@@ -80,7 +80,7 @@ export const Favorites = ({ favorites }: FavoritesPropsT) => {
                               </div>
                             </div>
                             <h2 className="place-card__name">
-                              <a href={`${AppRoute.Offer}/${instance.id}`}>{instance.title}</a>
+                              <Link to={`/offer/${instance.id}`}>{instance.title}</Link>
                             </h2>
                             <p className="place-card__type" style={{ textTransform: 'capitalize' }}>{instance.type}</p>
                           </div>

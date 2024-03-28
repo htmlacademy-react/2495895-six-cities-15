@@ -1,13 +1,13 @@
 import type { ReactNode } from 'react';
 
-type PagePropsT = {
+type PageProps = {
   className?: string;
   header?: ReactNode;
   footer?: ReactNode;
   children: ReactNode | ReactNode[];
 }
 
-export const Page = ({ className, header, footer, children }: PagePropsT) => (
+export const Page = ({ className, header, footer, children }: PageProps) => (
   <div className={`page ${className}`}>
     {header && header}
     {children}

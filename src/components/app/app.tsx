@@ -1,57 +1,63 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Favorites, Login, Main, NotFound, Offer } from '../../pages';
-import { AppRoute, AuthorizationStatus } from '../../consts';
+import { AppRoute } from '../../consts';
 import { PrivateRoute } from '../private-route';
 
 type AppProps = {
-  placesArr: OfferInstanceT[];
+  offers: OfferInstance[];
 }
 
-export type OfferInstanceT = {
+export type OfferInstance = {
   id: string;
   title: string;
   type: string;
   price: number;
   previewImage: string;
-  city: CityT;
-  location: LocationT;
+  city: City;
+  location: Location;
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;
 }
 
-type CityT = {
+type City = {
   name: string;
-  location: LocationT;
+  location: Location;
 }
 
-type LocationT = {
+type Location = {
   latitude: number;
   longitude: number;
   zoom: number;
 }
 
-function App({ placesArr }: AppProps) {
+function App({ offers }: AppProps) {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={<Main placesArr={placesArr} />}
+          element={<Main offers={offers} />}
         />
         <Route
           path={`${AppRoute.Offer}`}
-          element={<Offer offers={placesArr.slice(0, 3)} />}
+          element={<Offer offers={offers.slice(0, 3)} />}
         />
         <Route
           path={AppRoute.Login}
-          element={<Login />}
+          element={
+            <PrivateRoute
+              isReverse
+            >
+              <Login />
+            </PrivateRoute>
+          }
         />
         <Route
           path={AppRoute.Favorites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-              <Favorites favorites={placesArr.filter((instance) => instance.isFavorite)} />
+            <PrivateRoute>
+              <Favorites favorites={offers.filter((instance) => instance.isFavorite)} />
             </PrivateRoute>
           }
         />
