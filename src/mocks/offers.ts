@@ -6,7 +6,7 @@ export const offers = [
     'price': 321,
     'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/9.jpg',
     'city': {
-      'name': 'Paris',
+      'name': 'Amsterdam',
       'location': {
         'latitude': 48.85661,
         'longitude': 2.351499,
@@ -14,8 +14,8 @@ export const offers = [
       }
     },
     'location': {
-      'latitude': 48.868610000000004,
-      'longitude': 2.342499,
+      'latitude': 52.3909553943508,
+      'longitude': 4.85309666406198,
       'zoom': 16
     },
     'isFavorite': true,
@@ -29,7 +29,7 @@ export const offers = [
     'price': 242,
     'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/3.jpg',
     'city': {
-      'name': 'Paris',
+      'name': 'Amsterdam',
       'location': {
         'latitude': 48.85661,
         'longitude': 2.351499,
@@ -37,8 +37,8 @@ export const offers = [
       }
     },
     'location': {
-      'latitude': 48.858610000000006,
-      'longitude': 2.330499,
+      'latitude': 52.3609553943508,
+      'longitude': 4.85309666406198,
       'zoom': 16
     },
     'isFavorite': true,
@@ -60,8 +60,8 @@ export const offers = [
       }
     },
     'location': {
-      'latitude': 48.834610000000005,
-      'longitude': 2.335499,
+      'latitude': 52.3909553943508,
+      'longitude': 4.929309666406198,
       'zoom': 16
     },
     'isFavorite': true,
@@ -83,35 +83,12 @@ export const offers = [
       }
     },
     'location': {
-      'latitude': 48.85761,
-      'longitude': 2.358499,
+      'latitude': 52.3809553943508,
+      'longitude': 4.939309666406198,
       'zoom': 16
     },
     'isFavorite': true,
     'isPremium': true,
     'rating': 5
-  },
-  {
-    'id': 'cff87e70-bc4f-4d09-82ee-a82f677993e3',
-    'title': 'Nice, cozy, warm big bed apartment',
-    'type': 'apartment',
-    'price': 389,
-    'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/5.jpg',
-    'city': {
-      'name': 'Cologne',
-      'location': {
-        'latitude': 48.85661,
-        'longitude': 2.351499,
-        'zoom': 13
-      }
-    },
-    'location': {
-      'latitude': 48.87561,
-      'longitude': 2.375499,
-      'zoom': 16
-    },
-    'isFavorite': true,
-    'isPremium': false,
-    'rating': 1.7
   },
 ];

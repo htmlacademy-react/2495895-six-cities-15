@@ -5,6 +5,7 @@ import { PrivateRoute } from '../private-route';
 
 type AppProps = {
   offers: OfferInstance[];
+  cities: City[];
 }
 
 export type OfferInstance = {
@@ -20,7 +21,7 @@ export type OfferInstance = {
   rating: number;
 }
 
-type City = {
+export type City = {
   name: string;
   location: Location;
 }
@@ -31,13 +32,13 @@ type Location = {
   zoom: number;
 }
 
-function App({ offers }: AppProps) {
+function App({ offers, cities }: AppProps) {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={<Main offers={offers} />}
+          element={<Main offers={offers} cities={cities} />}
         />
         <Route
           path={`${AppRoute.Offer}`}
