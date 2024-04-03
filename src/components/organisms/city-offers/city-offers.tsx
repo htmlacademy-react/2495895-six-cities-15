@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Map, OffersList } from '../../organisms';
 
-import type { City, OfferInstance } from '../../app/app';
+import type { CityT, OfferInstance } from '../../app/app';
 
 type CityOffersProps = {
-  activeCity: City;
+  activeCity: CityT;
   offers: OfferInstance[];
 }
 

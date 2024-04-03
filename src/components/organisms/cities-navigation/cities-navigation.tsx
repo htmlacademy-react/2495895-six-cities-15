@@ -1,11 +1,11 @@
 import cn from 'classnames';
 
-import type { City } from '../../app/app';
+import type { CityT } from '../../app/app';
 
 type CitiesNavigationProps = {
-  cities: City[];
-  activeCity: City;
-  onChangeCityHandler: (City) => void;
+  cities: CityT[];
+  activeCity: CityT;
+  onChangeCityHandler: (city: CityT) => void;
 }
 
 export const CitiesNavigation = ({ cities, activeCity, onChangeCityHandler }: CitiesNavigationProps) => (

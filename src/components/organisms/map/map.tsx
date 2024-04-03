@@ -4,7 +4,7 @@ import { Icon, layerGroup, Marker } from 'leaflet';
 import { URL_MARKER_CURRENT, URL_MARKER_DEFAULT } from '../../../consts';
 import 'leaflet/dist/leaflet.css';
 
-import type { City } from '../../app/app';
+import type { CityT } from '../../app/app';
 
 type PointT = {
   id: string;
@@ -14,7 +14,7 @@ type PointT = {
 }
 
 type MapProps = {
-  city: City;
+  city: CityT;
   points: PointT[];
   selectedPointId?: string;
 };

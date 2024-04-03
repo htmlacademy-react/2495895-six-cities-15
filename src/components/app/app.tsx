@@ -5,7 +5,7 @@ import { PrivateRoute } from '../private-route';
 
 type AppProps = {
   offers: OfferInstance[];
-  cities: City[];
+  cities: CityT[];
 }
 
 export type OfferInstance = {
@@ -14,14 +14,14 @@ export type OfferInstance = {
   type: string;
   price: number;
   previewImage: string;
-  city: City;
+  city: CityT;
   location: Location;
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;
 }
 
-export type City = {
+export type CityT = {
   name: string;
   location: Location;
 }

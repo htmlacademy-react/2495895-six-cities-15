@@ -2,15 +2,15 @@ import { useState } from 'react';
 import { Page } from '../../components/templates';
 import { CitiesNavigation, CityOffers, Header } from '../../components/organisms';
 
-import type { City, OfferInstance } from '../../components/app/app';
+import type { CityT, OfferInstance } from '../../components/app/app';
 
 type MainProps = {
   offers: OfferInstance[];
-  cities: City[];
+  cities: CityT[];
 }
 
 export const Main = ({ offers, cities }: MainProps) => {
-  const [activeCity, setActiveCity] = useState<City>(cities.find((city) => city.name === 'Amsterdam'));
+  const [activeCity, setActiveCity] = useState<CityT>(cities.find((city) => city.name === 'Amsterdam'));
 
   return (
     <Page
