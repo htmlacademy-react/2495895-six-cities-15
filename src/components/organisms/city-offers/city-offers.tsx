@@ -1,23 +1,22 @@
 import { useState } from 'react';
 import { Map, OffersList } from '../../organisms';
 
-import type { City } from '../../../consts';
-import type { OfferInstance } from '../../app/app';
+import type { CityT, OfferInstance } from '../../app/app';
 
 type CityOffersProps = {
-  selectedCity: City;
+  activeCity: CityT;
   offers: OfferInstance[];
 }
 
-export const CityOffers = ({ selectedCity, offers }: CityOffersProps) => {
-  const [activeOfferId, setActiveOfferId] = useState<string>();
+export const CityOffers = ({ activeCity, offers }: CityOffersProps) => {
+  const [activeOffer, setActiveOffer] = useState<OfferInstance | null>(null);
 
   return (
     <div className="cities">
       <div className="cities__places-container container">
-        <section className="cities__places places">
+        <section className="cities__places places" style={{flexShrink: 0}}>
           <h2 className="visually-hidden">Places</h2>
-          <b className="places__found">{offers.length} places to stay in {selectedCity}</b>
+          <b className="places__found">{offers.length} places to stay in {activeCity.name}</b>
           <form className="places__sorting" action="#" method="get">
             <span className="places__sorting-caption">Sort by</span>
             <span className="places__sorting-type" tabIndex={0}>
@@ -33,10 +32,19 @@ export const CityOffers = ({ selectedCity, offers }: CityOffersProps) => {
               <li className="places__option" tabIndex={0}>Top rated first</li>
             </ul>
           </form>
-          <OffersList offers={offers} setActiveOfferId={setActiveOfferId} resetActiveOfferId={() => setActiveOfferId('')} />
+          <OffersList offers={offers} setActiveOffer={setActiveOffer} />
         </section>
         <div className="cities__right-section">
-          <Map activeOfferId={activeOfferId}/>
+          <Map
+            city={activeCity}
+            points={offers.map((offer) => ({
+              id: offer.id,
+              title: offer.title,
+              lat: offer.location.latitude,
+              lng: offer.location.longitude,
+            }))}
+            selectedPointId={activeOffer?.id}
+          />
         </div>
       </div>
     </div>

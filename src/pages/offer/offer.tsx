@@ -160,7 +160,7 @@ export const Offer = ({ offers }: OfferProps) => (
             </section>
           </div>
         </div>
-        <Map />
+        <Map city={offers[0].city} points={[{id: offers[0].id, title: offers[0].title, lat: offers[0].location.latitude, lng: offers[0].location.longitude}]} />
       </section>
       <div className="container">
         <section className="near-places places">

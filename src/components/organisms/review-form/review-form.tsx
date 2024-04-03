@@ -1,10 +1,5 @@
 import { useState } from 'react';
 
-type FormDataT = {
-  rating: number;
-  review: string;
-}
-
 export const ReviewForm = () => {
   const [formData, setFormData] = useState({
     rating: 0,
@@ -13,7 +8,7 @@ export const ReviewForm = () => {
 
   const isFormSendingAvailable = formData.review.length >= 50 && formData.rating > 0;
 
-  const updateFormData = <Key extends keyof FormDataT, Value extends FormDataT[Key]>(property: Key, value: Value) => {
+  const updateFormData = (property: string, value: number | string) => {
     setFormData({...formData, [property]: value});
   };
 
