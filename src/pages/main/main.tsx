@@ -10,7 +10,7 @@ type MainProps = {
 }
 
 export const Main = ({ offers, cities }: MainProps) => {
-  const [activeCity, setActiveCity] = useState<CityT>(cities.find((city) => city.name === 'Amsterdam'));
+  const [activeCity, setActiveCity] = useState<CityT>(cities[3]);
 
   return (
     <Page
