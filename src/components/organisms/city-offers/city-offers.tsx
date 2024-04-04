@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Map, OffersList } from '../../organisms';
 
 import type { CityT, OfferInstance } from '../../app/app';
+import { constructPointsListfromOffers } from '../../../utils';
 
 type CityOffersProps = {
   activeCity: CityT;
@@ -37,13 +38,9 @@ export const CityOffers = ({ activeCity, offers }: CityOffersProps) => {
         <div className="cities__right-section">
           <Map
             city={activeCity}
-            points={offers.map((offer) => ({
-              id: offer.id,
-              title: offer.title,
-              lat: offer.location.latitude,
-              lng: offer.location.longitude,
-            }))}
+            points={constructPointsListfromOffers(offers)}
             selectedPointId={activeOffer?.id}
+            className='cities__map'
           />
         </div>
       </div>

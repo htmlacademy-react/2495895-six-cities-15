@@ -14,6 +14,7 @@ export const OffersList = ({ offers, setActiveOffer }: OffersListProps) => (
         key={card.id}
         onMouseOver={() => setActiveOffer(card)}
         onMouseLeave={() => setActiveOffer(null)}
+        className='cities__card'
         {...card}
       />
     ))}

@@ -6,7 +6,7 @@ import 'leaflet/dist/leaflet.css';
 
 import type { CityT } from '../../app/app';
 
-type PointT = {
+export type PointT = {
   id: string;
   title: string;
   lat: number;
@@ -17,6 +17,7 @@ type MapProps = {
   city: CityT;
   points: PointT[];
   selectedPointId?: string;
+  className?: string;
 };
 
 const defaultCustomIcon = new Icon({
@@ -31,7 +32,7 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 40]
 });
 
-export const Map = ({ city, points, selectedPointId }: MapProps) => {
+export const Map = ({ city, points, selectedPointId, className }: MapProps) => {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
@@ -61,7 +62,7 @@ export const Map = ({ city, points, selectedPointId }: MapProps) => {
 
   return (
     <section
-      className="cities__map map"
+      className={`${className} map`}
       ref={mapRef}
     />
   );
