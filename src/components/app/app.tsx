@@ -1,11 +1,14 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Favorites, Login, Main, NotFound, Offer } from '../../pages';
 import { AppRoute } from '../../consts';
 import { PrivateRoute } from '../private-route';
+import { Favorites, Login, Main, NotFound, Offer } from '../../pages';
+
+import type { ReviewT } from '../organisms/reviews-list/reviews-list';
 
 type AppProps = {
   offers: OfferInstance[];
   cities: CityT[];
+  reviews: ReviewT[];
 }
 
 export type OfferInstance = {
@@ -32,7 +35,7 @@ type Location = {
   zoom: number;
 }
 
-function App({ offers, cities }: AppProps) {
+function App({ offers, cities, reviews }: AppProps) {
   return (
     <BrowserRouter>
       <Routes>
@@ -42,7 +45,7 @@ function App({ offers, cities }: AppProps) {
         />
         <Route
           path={`${AppRoute.Offer}`}
-          element={<Offer offers={offers.slice(0, 3)} />}
+          element={<Offer offers={offers.slice(0, 3)} reviews={reviews} />}
         />
         <Route
           path={AppRoute.Login}

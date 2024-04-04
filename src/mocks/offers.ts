@@ -6,12 +6,12 @@ export const offers = [
     'price': 321,
     'previewImage': 'https://15.design.htmlacademy.pro/static/hotel/9.jpg',
     'city': {
-      'name': 'Amsterdam',
-      'location': {
-        'latitude': 48.85661,
-        'longitude': 2.351499,
-        'zoom': 13
-      }
+      name: 'Amsterdam',
+      location: {
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 8,
+      },
     },
     'location': {
       'latitude': 52.3909553943508,

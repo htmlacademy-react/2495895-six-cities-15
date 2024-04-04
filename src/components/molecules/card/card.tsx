@@ -9,18 +9,19 @@ type CardProps = {
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;
+  className?: string;
   onMouseOver?: () => void;
   onMouseLeave?: () => void;
 }
 
 export const Card = (props: CardProps) => {
-  const { id, title, type, price, previewImage, isFavorite, isPremium, rating, onMouseOver, onMouseLeave } = props;
+  const { id, title, type, price, previewImage, isFavorite, isPremium, rating, className, onMouseOver, onMouseLeave } = props;
   const onMouseOverHandler = () => onMouseOver && onMouseOver();
   const onMouseLeaveHandler = () => onMouseLeave && onMouseLeave();
 
   return (
     <article
-      className="cities__card place-card"
+      className={`${className} place-card`}
       onMouseOver={onMouseOverHandler}
       onMouseLeave={onMouseLeaveHandler}
     >
