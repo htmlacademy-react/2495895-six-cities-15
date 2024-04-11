@@ -1,4 +1,6 @@
-export const offers = [
+import { OfferInstance } from '../components/app/app';
+
+export const offers: OfferInstance[] = [
   {
     'id': 'e1ec5901-fcab-465a-9e95-020f8cf61c00',
     'title': 'Loft Studio in the Central Area',

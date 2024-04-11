@@ -2,7 +2,7 @@ import { useAppSelector } from '../../../hooks/store';
 import { CITIES, CityName } from '../../../consts';
 import { Map, OffersList } from '../../organisms';
 import { constructPointsListfromOffers } from '../../../utils';
-import { offersSelectors } from '../../../store/slices/offers';
+import { selectActiveOfferId, selectOffers } from '../../../store/selectors/offers';
 
 import type { OfferInstance } from '../../app/app';
 
@@ -11,8 +11,8 @@ type CityOffersProps = {
 };
 
 export const CityOffers = ({ currentCity }: CityOffersProps) => {
-  const offers = useAppSelector(offersSelectors.offers);
-  const activeOfferId = useAppSelector(offersSelectors.activeOferId);
+  const offers = useAppSelector(selectOffers);
+  const activeOfferId = useAppSelector(selectActiveOfferId);
 
   const offersByCity: Partial<Record<CityName, OfferInstance[]>> = {};
 

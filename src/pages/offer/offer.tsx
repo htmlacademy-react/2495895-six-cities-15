@@ -7,7 +7,8 @@ import type { OfferInstance } from '../../components/app/app';
 import type { ReviewT } from '../../components/organisms/reviews-list/reviews-list';
 import { constructPointsListfromOffers } from '../../utils';
 import { useActionCreators, useAppSelector } from '../../hooks/store';
-import { offersActions, offersSelectors } from '../../store/slices/offers';
+import { offersActions } from '../../store/slices/offers';
+import { selectActiveOfferId } from '../../store/selectors/offers';
 
 type OfferProps = {
   offers: OfferInstance[];
@@ -15,7 +16,7 @@ type OfferProps = {
 }
 
 export const Offer = ({ offers, reviews }: OfferProps) => {
-  const activeOfferId = useAppSelector(offersSelectors.activeOferId);
+  const activeOfferId = useAppSelector(selectActiveOfferId);
   const { setActiveOfferId } = useActionCreators(offersActions);
 
   return (
@@ -163,7 +164,7 @@ export const Offer = ({ offers, reviews }: OfferProps) => {
                 <Card
                   key={instance.id}
                   onMouseOver={() => setActiveOfferId(instance.id)}
-                  onMouseLeave={() => setActiveOfferId(null)}
+                  onMouseLeave={() => setActiveOfferId(undefined)}
                   className='near-places__card'
                   {...instance}
                 />))}

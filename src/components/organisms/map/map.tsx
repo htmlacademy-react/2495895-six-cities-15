@@ -1,12 +1,12 @@
-import { useEffect, useRef } from 'react';
 import useMap from '../../../hooks/use-map';
+import { useEffect, useRef } from 'react';
 import { Icon, layerGroup, Marker } from 'leaflet';
 import { URL_MARKER_CURRENT, URL_MARKER_DEFAULT } from '../../../consts';
+import { selectActiveOfferId } from '../../../store/selectors/offers';
+import { useAppSelector } from '../../../hooks/store';
 import 'leaflet/dist/leaflet.css';
 
 import type { CityT } from '../../app/app';
-import { useSelector } from 'react-redux';
-import { offersSelectors } from '../../../store/slices/offers';
 
 export type PointT = {
   id: string;
@@ -34,7 +34,7 @@ const currentCustomIcon = new Icon({
 });
 
 export const Map = ({ city, points, className }: MapProps) => {
-  const activeOfferId = useSelector(offersSelectors.activeOferId);
+  const activeOfferId = useAppSelector(selectActiveOfferId);
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 

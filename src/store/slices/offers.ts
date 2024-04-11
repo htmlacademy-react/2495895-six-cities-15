@@ -1,12 +1,13 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { offers } from '../../mocks/offers';
 
+import type { PayloadAction } from '@reduxjs/toolkit';
 import type { OfferInstance } from '../../components/app/app';
 
 type OffersState = {
   offers: OfferInstance[];
   activeOfferId?: string;
-}
+};
 
 const initialState: OffersState = {
   offers,
@@ -14,20 +15,15 @@ const initialState: OffersState = {
 };
 
 const offersSlice = createSlice({
-  initialState,
   name: 'offers',
+  initialState,
   reducers: {
-    setActiveOfferId: (state, action: PayloadAction<OfferInstance['id'] | undefined>) => {
+    setActiveOfferId: (state: OffersState, action: PayloadAction<OfferInstance['id'] | undefined>) => {
       state.activeOfferId = action.payload;
     },
-  },
-  selectors: {
-    offers: (state: OffersState) => state.offers,
-    activeOferId: (state: OffersState) => state.activeOfferId,
   },
 });
 
 const offersActions = offersSlice.actions;
-const offersSelectors = offersSlice.selectors;
 
-export { offersActions, offersSelectors, offersSlice };
+export { offersActions, offersSlice };
