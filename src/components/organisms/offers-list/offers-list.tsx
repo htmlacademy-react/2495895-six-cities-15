@@ -1,22 +1,26 @@
 import { Card } from '../../molecules';
 
 import type { OfferInstance } from '../../app/app';
+import { useActionCreators } from '../../../hooks/store';
+import { offersActions } from '../../../store/slices/offers';
 
 type OffersListProps = {
   offers: OfferInstance[];
-  setActiveOffer: (offer: OfferInstance | null) => void;
 }
 
-export const OffersList = ({ offers, setActiveOffer }: OffersListProps) => (
-  <div className="cities__places-list places__list tabs__content">
-    {offers.map((card) => (
-      <Card
-        key={card.id}
-        onMouseOver={() => setActiveOffer(card)}
-        onMouseLeave={() => setActiveOffer(null)}
-        className='cities__card'
-        {...card}
-      />
-    ))}
-  </div>
-);
+export const OffersList = ({ offers }: OffersListProps) => {
+  const { setActiveOfferId } = useActionCreators(offersActions);
+  return (
+    <div className="cities__places-list places__list tabs__content">
+      {offers.map((card) => (
+        <Card
+          key={card.id}
+          onMouseOver={() => setActiveOfferId(card.id)}
+          onMouseLeave={() => setActiveOfferId(undefined)}
+          className='cities__card'
+          {...card}
+        />
+      ))}
+    </div>
+  );
+};

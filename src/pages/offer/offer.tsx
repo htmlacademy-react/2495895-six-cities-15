@@ -6,7 +6,8 @@ import { ReviewsList } from '../../components/organisms/reviews-list';
 import type { OfferInstance } from '../../components/app/app';
 import type { ReviewT } from '../../components/organisms/reviews-list/reviews-list';
 import { constructPointsListfromOffers } from '../../utils';
-import { useState } from 'react';
+import { useActionCreators, useAppSelector } from '../../hooks/store';
+import { offersActions, offersSelectors } from '../../store/slices/offers';
 
 type OfferProps = {
   offers: OfferInstance[];
@@ -14,7 +15,8 @@ type OfferProps = {
 }
 
 export const Offer = ({ offers, reviews }: OfferProps) => {
-  const [activeOffer, setActiveOffer] = useState<OfferInstance | null>(null);
+  const activeOfferId = useAppSelector(offersSelectors.activeOferId);
+  const { setActiveOfferId } = useActionCreators(offersActions);
 
   return (
     <Page header={<Header/>}>
@@ -149,7 +151,7 @@ export const Offer = ({ offers, reviews }: OfferProps) => {
           <Map
             city={offers[0].city}
             points={constructPointsListfromOffers(offers)}
-            selectedPointId={activeOffer?.id}
+            selectedPointId={activeOfferId}
             className='offer__map'
           />
         </section>
@@ -160,8 +162,8 @@ export const Offer = ({ offers, reviews }: OfferProps) => {
               {offers.map((instance) => (
                 <Card
                   key={instance.id}
-                  onMouseOver={() => setActiveOffer(instance)}
-                  onMouseLeave={() => setActiveOffer(null)}
+                  onMouseOver={() => setActiveOfferId(instance.id)}
+                  onMouseLeave={() => setActiveOfferId(null)}
                   className='near-places__card'
                   {...instance}
                 />))}

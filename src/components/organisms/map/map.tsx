@@ -5,6 +5,8 @@ import { URL_MARKER_CURRENT, URL_MARKER_DEFAULT } from '../../../consts';
 import 'leaflet/dist/leaflet.css';
 
 import type { CityT } from '../../app/app';
+import { useSelector } from 'react-redux';
+import { offersSelectors } from '../../../store/slices/offers';
 
 export type PointT = {
   id: string;
@@ -16,7 +18,6 @@ export type PointT = {
 type MapProps = {
   city: CityT;
   points: PointT[];
-  selectedPointId?: string;
   className?: string;
 };
 
@@ -32,7 +33,8 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 40]
 });
 
-export const Map = ({ city, points, selectedPointId, className }: MapProps) => {
+export const Map = ({ city, points, className }: MapProps) => {
+  const activeOfferId = useSelector(offersSelectors.activeOferId);
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
@@ -47,7 +49,7 @@ export const Map = ({ city, points, selectedPointId, className }: MapProps) => {
 
         marker
           .setIcon(
-            selectedPointId !== undefined && point.id === selectedPointId
+            activeOfferId !== undefined && point.id === activeOfferId
               ? currentCustomIcon
               : defaultCustomIcon
           )
@@ -58,7 +60,7 @@ export const Map = ({ city, points, selectedPointId, className }: MapProps) => {
         map.removeLayer(markerLayer);
       };
     }
-  }, [map, points, selectedPointId]);
+  }, [map, points, activeOfferId]);
 
   return (
     <section

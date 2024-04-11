@@ -1,15 +1,9 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { AppRoute } from '../../consts';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AppRoute, CITIES, CityName } from '../../consts';
 import { PrivateRoute } from '../private-route';
 import { Favorites, Login, Main, NotFound, Offer } from '../../pages';
-
-import type { ReviewT } from '../organisms/reviews-list/reviews-list';
-
-type AppProps = {
-  offers: OfferInstance[];
-  cities: CityT[];
-  reviews: ReviewT[];
-}
+import { offers } from '../../mocks/offers';
+import { reviews } from '../../mocks/reviews';
 
 export type OfferInstance = {
   id: string;
@@ -25,7 +19,7 @@ export type OfferInstance = {
 }
 
 export type CityT = {
-  name: string;
+  name: CityName;
   location: Location;
 }
 
@@ -35,17 +29,22 @@ type Location = {
   zoom: number;
 }
 
-function App({ offers, cities, reviews }: AppProps) {
+function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path={AppRoute.Root}
-          element={<Main offers={offers} cities={cities} />}
-        />
+        <Route element={<Navigate to={`/${CITIES[0].id}`} />} index path={AppRoute.Root} />
+        {CITIES.map((city) => (
+          <Route
+            key={city.id}
+            index
+            path={`/${city.id}`}
+            element={<Main currentCity={city.name} />}
+          />
+        ))}
         <Route
           path={`${AppRoute.Offer}`}
-          element={<Offer offers={offers.slice(0, 3)} reviews={reviews} />}
+          element={<Offer offers={offers.slice(0,3)} reviews={reviews} />}
         />
         <Route
           path={AppRoute.Login}
